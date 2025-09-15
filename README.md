@@ -56,10 +56,10 @@ systemctl status nginx
 ---
 
 ## **5. Clone the React Application from GitHub**  
-Navigate to a temporary directory and **clone the repository**:  
+Navigate to a temporary directory and **clone the repository** and change to that directory:  
 
 ```sh
-git clone https://github.com/pravinmishraaws/my-react-app.git
+git clone http://github.com:Yaswanth20/my-react-app.git
 cd my-react-app
 ```
 
