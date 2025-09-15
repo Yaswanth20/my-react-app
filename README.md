@@ -1,20 +1,25 @@
 
-# **Deploy a React Application on Ubuntu VM with Nginx**
+# **Deploy a React Application on Amazon EC2 Ubuntu VM with Nginx**
 
 This guide provides step-by-step instructions to deploy and run a **This React application** on an **Ubuntu VM** using **Nginx**, making it accessible from a **public IP**.
 
 ---
 
+## **1. Launch EC2 on Amazon AWS
+Launch an EC2 instance on Amazon. Select the ubuntu VM and in **Security Groups** make sure to allow HTTP and SSH. Create a key pair using pem and save it.
 
-## **1. Install Node.js and npm**  
-Since React requires **Node.js** and **npm**, install them first:  
+## **2. Connect to EC2
+Navigate back to your instances and select the EC2 instance and hit connect. Navigate to SSH and follow the instructions on your command shell
+
+## **3. Install Node.js and npm**  
+Since a React application requires both **Node.js** and **npm**, install them first:  
 
 ```sh
 sudo apt update
 sudo apt install -y nodejs npm
 ```
 
-Verify the installation:  
+To verify the installation:  
 
 ```sh
 node -v
@@ -23,7 +28,7 @@ npm -v
 
 ---
 
-## **2. Install Nginx**  
+## **4. Install Nginx**  
 Update package lists and install **Nginx**:  
 
 ```sh
@@ -36,6 +41,11 @@ Start and enable Nginx:
 sudo systemctl start nginx
 sudo systemctl enable nginx
 ```
+To stop an Nginx server use:
+
+```sh
+sudo systemctl stop nginx
+```
 
 Check Nginx status:  
 
@@ -45,7 +55,7 @@ systemctl status nginx
 
 ---
 
-## **3. Clone the React Application from GitHub**  
+## **5. Clone the React Application from GitHub**  
 Navigate to a temporary directory and **clone the repository**:  
 
 ```sh
