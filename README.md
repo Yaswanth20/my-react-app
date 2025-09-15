@@ -5,10 +5,10 @@ This guide provides step-by-step instructions to deploy and run a **This React a
 
 ---
 
-## **1. Launch EC2 on Amazon AWS
+## **1. Launch EC2 on Amazon AWS**
 Launch an EC2 instance on Amazon. Select the ubuntu VM and in **Security Groups** make sure to allow HTTP and SSH. Create a key pair using pem and save it.
 
-## **2. Connect to EC2
+## **2. Connect to EC2**
 Navigate back to your instances and select the EC2 instance and hit connect. Navigate to SSH and follow the instructions on your command shell
 
 ## **3. Install Node.js and npm**  
@@ -120,7 +120,7 @@ sudo cp -r build/* /var/www/html/
 ```
 ---
 
-## **8. Enable Nginx server
+## **8. Enable Nginx server**
 Start and enable your server:
 
 ```sh
@@ -129,9 +129,9 @@ sudo systemctl enable nginx
 ```
 ---
 
-## **9. Extra content
+## **9. Extra content**
 
-**Check to see what port your server is running on:
+**Check to see what port your server is running on:**
 Navigate back to your main directory
 ```sh
 cd ~
