@@ -132,15 +132,20 @@ sudo systemctl enable nginx
 ## **9. Extra content**
 
 **Check to see what port your server is running on:**
+
 Navigate back to your main directory
+
 ```sh
 cd ~
 ```
+
 check your nginx.conf file using cat
+
 ```sh
-cat \etc/nginx/nginx.conf
+cat /etc/nginx/nginx.conf
 ```
 and look in the html section for the server and specifically the listen to identify the port. It should be defaultly on 80
+
 ```sh
 server {
     listen 80;
