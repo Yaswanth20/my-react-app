@@ -59,7 +59,7 @@ systemctl status nginx
 Navigate to a temporary directory and **clone the repository** and change to that directory:  
 
 ```sh
-git clone http://github.com:Yaswanth20/my-react-app.git
+git clone https://github.com/Yaswanth20/my-react-app.git
 cd my-react-app
 ```
 
@@ -85,12 +85,12 @@ Modify the content
 <p>Date: <strong>DD/MM/YYYY</strong></p>
 ```
 
-Update your details like: Your Full Name & Date
+Update the page as you like
 
 ---
 
-## **4. Install Dependencies and Build the React App**  
-Install required dependencies:  
+## **6. Install Dependencies and Build the React App**  
+Install required npm dependencies:  
 
 ```sh
 npm install
@@ -106,7 +106,7 @@ This will generate a **`build/`** folder with production-ready static files.
 
 ---
 
-## **5. Deploy Build Files to Nginx Web Directory**  
+## **7. Deploy Build Files to Nginx Web Directory**  
 Remove any existing files in the Nginx web directory:  
 
 ```sh
@@ -118,74 +118,44 @@ Copy the React **build files** to `/var/www/html/`:
 ```sh
 sudo cp -r build/* /var/www/html/
 ```
-
-Set proper permissions:  
-
-```sh
-sudo chown -R www-data:www-data /var/www/html
-sudo chmod -R 755 /var/www/html
-```
-
 ---
 
-## **6. Configure Nginx for React**  
-Nginx configuration file:   
+## **8. Enable Nginx server
+Start and enable your server:
 
+```sh
+sudo systemctl start nginx 
+sudo systemctl enable nginx
 ```
-echo 'server {
+---
+
+## **9. Extra content
+
+**Check to see what port your server is running on:
+Navigate back to your main directory
+```sh
+cd ~
+```
+check your nginx.conf file using cat
+```sh
+cat \etc/nginx/nginx.conf
+```
+and look in the html section for the server and specifically the listen to identify the port. It should be defaultly on 80
+```sh
+server {
     listen 80;
-    server_name _;
-    root /var/www/html;
-    index index.html;
-    
-    location / {
-        try_files $uri /index.html;
-    }
-
-    error_page 404 /index.html;
-}' | sudo tee /etc/nginx/sites-available/default > /dev/null
-
+    listen 443 ssl;
+    server_name example.com;
+    # ... other configurations
+}
 ```
 
-Restart Nginx to apply the changes:  
+If its not there, you can also use network utilities with the following command
 
 ```sh
-sudo systemctl restart nginx
+sudo ss -nltp | grep nginx
 ```
 
----
+Try stopping the nginx server and see what happens.
 
-## **7. Find Your Public IP and Access the Application**  
-Retrieve the **public IP** of your Ubuntu VM:  
 
-```sh
-curl ifconfig.me
-```
-
-Now, students can **access the React application** in a browser using:  
-
-```
-http://<your-public-ip>
-```
-
-For example, if the public IP is **203.0.113.25**, visit:  
-
-```
-http://203.0.113.25
-```
-
----
-
-## **8. Verify the Deployment**  
-Ensure Nginx is correctly serving the React app:  
-
-```sh
-curl <your-public-ip>
-```
-
-If successful, your **React app is live!**  
-
----
-
-## **Your React App is Now Live on Ubuntu with Nginx!**  
-Now your **React application** is deployed on an **Ubuntu VM with Nginx**, accessible from a **public IP**. 
